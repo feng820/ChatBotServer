@@ -1,1 +1,3 @@
 # ChatBot
+
+Integrates ChatGPT APIs.
