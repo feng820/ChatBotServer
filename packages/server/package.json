@@ -2,14 +2,17 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server"
+    "start": "nodemon -r dotenv/config app"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^4.15.0"
+    "@fastify/aws-lambda": "^3.2.0",
+    "@fastify/cors": "^8.2.1",
+    "fastify": "^4.15.0",
+    "openai": "^3.2.1"
   }
 }
