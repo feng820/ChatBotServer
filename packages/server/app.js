@@ -3,8 +3,17 @@ const fastify = require('fastify')
 
 const chatGPTRoutes = require('./routes/chatgpt')
 
-const app = fastify()
-app.register(cors)
+const app = fastify({
+  logger: {
+    transport: {
+      target: 'pino-pretty',
+    },
+  },
+})
+app.register(cors, {
+  origin: [`http://l1ocalhost:${process.env.PORT}`, process.env.WEBAPP_ORIGIN],
+  methods: ['GET', 'POST'],
+})
 app.register(chatGPTRoutes)
 
 if (require.main == module) {

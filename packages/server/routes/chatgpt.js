@@ -25,10 +25,7 @@ const chatMessageReplyOptions = {
       },
     },
   },
-}
-
-function chatGPTRoutes(fastify, options, done) {
-  fastify.post('/api/chat', chatMessageReplyOptions, async (req, reply) => {
+  handler: async function (req, reply) {
     try {
       const resp = await openai.createChatCompletion({
         model: 'gpt-3.5-turbo',
@@ -56,7 +53,11 @@ function chatGPTRoutes(fastify, options, done) {
           throw new Error('Unexpected error while calling OpenAI API')
       }
     }
-  })
+  },
+}
+
+function chatGPTRoutes(fastify, options, done) {
+  fastify.post('/api/chat', chatMessageReplyOptions)
 
   done()
 }
