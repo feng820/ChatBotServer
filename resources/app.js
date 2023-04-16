@@ -4,7 +4,7 @@ const openAIClient = require('./plugins/openai')
 const chatGPTRoutes = require('./routes/chatgpt')
 
 const app = fastify()
-app.register(openAIClient, { secretId: 'chatGPT_secret_key' })
+app.register(openAIClient, { secretId: process.env.CHATGPT_API_KEY_SECRET_ID })
 app.register(chatGPTRoutes)
 
 if (require.main == module) {
