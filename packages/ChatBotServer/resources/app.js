@@ -3,13 +3,7 @@ const fastify = require('fastify')
 const openAIClient = require('./plugins/openai')
 const chatGPTRoutes = require('./routes/chatgpt')
 
-const app = fastify({
-  logger: {
-    transport: {
-      target: 'pino-pretty',
-    },
-  },
-})
+const app = fastify()
 app.register(openAIClient, { secretId: 'chatGPT_secret_key' })
 app.register(chatGPTRoutes)
 
