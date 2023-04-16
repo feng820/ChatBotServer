@@ -9,6 +9,9 @@ class ChatBotServerLambda extends Construct {
       runtime: lambda.Runtime.NODEJS_16_X,
       code: lambda.Code.fromAsset('resources'),
       handler: 'lambda.handler',
+      environment: {
+        NODE_ENV: 'prod',
+      },
     })
   }
 }

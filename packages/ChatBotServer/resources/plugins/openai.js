@@ -18,10 +18,11 @@ async function retrieveAPISecrets(SecretId) {
 }
 
 async function openAIClient(fastify, options) {
-  const apiKey = await retrieveAPISecrets(options.secretId)
-  const openai = new OpenAIApi(
-    new Configuration({ apiKey: apiKey.chatGPTAPIKey })
-  )
+  const apiKey =
+    process.env.NODE_ENV === 'localhost'
+      ? process.env.CHATGPT_API_KEY
+      : await retrieveAPISecrets(options.secretId).chatGPTAPIKey
+  const openai = new OpenAIApi(new Configuration({ apiKey }))
   fastify.decorate('openAIClient', openai)
 }
 
