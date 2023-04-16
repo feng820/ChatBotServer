@@ -1,11 +1,3 @@
-const { Configuration, OpenAIApi } = require('openai')
-
-const openai = new OpenAIApi(
-  new Configuration({
-    apiKey: process.env.CHATGPT_API_KEY,
-  })
-)
-
 const MAX_TOKEN_SIZE = 1000
 
 const chatMessageReplyOptions = {
@@ -27,7 +19,7 @@ const chatMessageReplyOptions = {
   },
   handler: async function (req, reply) {
     try {
-      const resp = await openai.createChatCompletion({
+      const resp = await req.server.openAIClient.createChatCompletion({
         model: 'gpt-3.5-turbo',
         messages: [{ role: 'user', content: req.body.message }],
         max_tokens: MAX_TOKEN_SIZE,
@@ -36,7 +28,6 @@ const chatMessageReplyOptions = {
       const replyMessage = resp.data.choices[0].message.content
       reply.send({ reply: replyMessage })
     } catch (error) {
-      console.log(error)
       switch (error.response && error.response.status) {
         case 400:
           reply.code(400).send({ error: error.response.statusText })
@@ -56,10 +47,8 @@ const chatMessageReplyOptions = {
   },
 }
 
-function chatGPTRoutes(fastify, options, done) {
+async function chatGPTRoutes(fastify) {
   fastify.post('/api/chat', chatMessageReplyOptions)
-
-  done()
 }
 
 module.exports = chatGPTRoutes

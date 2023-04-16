@@ -2,11 +2,11 @@
 
 const cdk = require('aws-cdk-lib')
 
-const { ChatServerlambdaStack } = require('../lib/chat_bot_server-stack')
+const { ChatBotServerCdkStack } = require('../lib/chat_bot_server-stack')
 
 // This is the main entry point for the application
 const app = new cdk.App()
-new ChatServerlambdaStack(app, 'TestCdkStack', {
+new ChatBotServerCdkStack(app, 'ChatServerlambdaStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */

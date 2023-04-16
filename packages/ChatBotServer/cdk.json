@@ -1,5 +1,5 @@
 {
-  "app": "node bin/chat_server_lambda.js",
+  "app": "node bin/chat_bot_server.js",
   "watch": {
     "include": [
       "**"

@@ -1,10 +1,10 @@
 {
-  "name": "chat_server_lambda",
+  "name": "chat_bot_server",
   "version": "1.0.0",
   "description": "",
   "main": "resouces/app.js",
   "bin": {
-    "chat_server_lambda": "bin/chat_server_lambda.js"
+    "chat_bot_server": "bin/chat_bot_server.js"
   },
   "scripts": {
     "start": "nodemon -r dotenv/config resources/app"
@@ -14,11 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-lambda": "^3.312.0",
+    "@aws-sdk/client-secrets-manager": "^3.312.0",
     "@fastify/aws-lambda": "^3.2.0",
     "@fastify/cors": "^8.2.1",
     "aws-cdk-lib": "2.65.0",
     "constructs": "^10.0.0",
     "fastify": "^4.15.0",
+    "fastify-plugin": "^4.5.0",
     "openai": "^3.2.1",
     "pino-pretty": "^10.0.0"
   }
