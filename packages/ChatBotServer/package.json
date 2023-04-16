@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-lambda": "^3.312.0",
     "@aws-sdk/client-secrets-manager": "^3.312.0",
     "@fastify/aws-lambda": "^3.2.0",
     "@fastify/cors": "^8.2.1",
